@@ -1,0 +1,33 @@
+{
+	"name": "angular-globe",
+	"version": "1.0.0",
+	"authors": [
+		"Matus Lestan <matus.lestan@gmail.com>"
+	],
+	"description": "Angular directive for interactive Globe using D3",
+	"keywords": [
+		"angular",
+		"AngularJS",
+		"angular-globe",
+		"earth",
+		"globe",
+		"d3",
+		"world"
+	],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	],
+	"dependencies": {
+		"angular":"~1.2.0",
+		"angular-animate":"~1.2.0",
+		"angular-sanitize":"~1.2.0",
+		"angular-touch":"~1.2.0"
+	},
+	"devDependencies": {
+	}
+}
