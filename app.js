@@ -5,7 +5,7 @@
 
 'use strict';
 
-angular.module('myApp', [
+angular.module('angularGlobeDemo', [
 'ngRoute', 'ngSanitize', 'ngTouch', 'ngAnimate',		//additional angular modules
 'madvas.angular-globe'
 ]).
