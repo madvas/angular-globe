@@ -28,10 +28,10 @@
        * You can load custom GeoJSON data as map into globe
        * If you have data in topojson, you have to convert it to GeoJSON like this:
        */
-      $http.get('pages/core/resources/us.json').then(function(res) {
+      $http.get('angular-globe/pages/core/resources/us.json').then(function(res) {
         vm.mapData = topojson.feature(res.data, res.data.objects.land);
       });
-      $http.get('pages/expert/expert.json').then(function(res) {
+      $http.get('angular-globe/pages/expert/expert.json').then(function(res) {
         vm.points = [
           {
             values : res.data

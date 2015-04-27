@@ -46,7 +46,9 @@ gulp.task('inject', function() {
     './pages/**/*.css'
   ], {read : false});
 
-  return target.pipe(inject(sources))
+  return target.pipe(inject(sources, {
+    addPrefix : 'angular-globe'
+  }))
     .pipe(gulp.dest('.'));
 });
 
@@ -61,7 +63,9 @@ gulp.task('inject:dev', function() {
     './pages/**/*.css'
   ], {read : false});
 
-  return target.pipe(inject(sources))
+  return target.pipe(inject(sources, {
+    addPrefix : 'angular-globe'
+  }))
     .pipe(gulp.dest('.'));
 });
 
