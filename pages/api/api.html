@@ -1,0 +1,131 @@
+<div flex layout="row" layout-align="center center">
+  <md-content flex="100" flex-gt-sm="90" flex-gt-md="90" flex-gt-lg="75"
+              class="md-whiteframe-z1 md-padding">
+    <code class="code-big">&lt;m2s-globe</code>
+    <div class="api-attr"><code class="code-attr">points="{Array}" watched</code>
+      - Array of point groups to be drawn.
+      Point group is a object containing array property <code>values</code>, where each element
+      is point object.
+    </div>
+    <div class="api-attr"><code class="code-attr">map-data="{Object}" watched</code>
+      - If you load the directive with
+      <code>angular-globe-with-maps.js</code> you don't need to use this. Otherwise, if you
+      want to provide custom "land", put here GeoJSON data.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">map-type="{land|countries}"</code>
+      - When you loaded directive with
+      <code>angular-globe-with-maps.js</code> you can specify, whether to show only
+      land or country borders also. See <a ui-sref="advanced">Advanced Example</a>
+    </div>
+
+    <div class="api-attr"><code class="code-attr">size="{Number}"</code>
+      - Specify size of a globe. Width equals to height.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">point-stroke="{Expression} watched"</code>
+      - Define stroke color of a point. Expression has available point object as <code class="code-attr">d</code>.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">point-stroke-width="{Expression} watched"</code>
+      - Define stroke width of a point. Expression has available point object as <code class="code-attr">d</code>.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">point-fill="{Expression} watched"</code>
+      - Define fill color of a point. Expression has available point object as <code class="code-attr">d</code>.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">point-class="{Expression} watched"</code>
+       - Define class of a point. Expression has available point object as <code class="code-attr">d</code>.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">point-id="{Expression} watched"</code>
+      - Define id attribute of a point. Expression has available point object as <code class="code-attr">d</code>.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">point-lat="{Expression} watched"</code>
+      - Define latitude of a point. Expression has available point object as <code class="code-attr">d</code>.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">point-lng="{Expression} watched"</code>
+      - Define longitude of a point. Expression has available point object as <code class="code-attr">d</code>.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">point-radius="{Expression} watched"</code>
+      - Define radius of a point. Expression has available point object as <code class="code-attr">d</code>.
+    </div>
+
+    <div class="api-attr"><code class="code-attr">graticule="{Boolean} default:true watched"</code>
+      - Show/Hide graticule
+    </div>
+
+    <div class="api-attr"><code class="code-attr">draggable="{Boolean} default:false watched"</code>
+      - If globe is draggable
+    </div>
+
+    <div class="api-attr"><code class="code-attr">sensitivity="{Number} default:0.25 watched"</code>
+      - Sensitivity of rotation while dragging
+    </div>
+
+    <div class="api-attr"><code class="code-attr">clickable="{Boolean} default:true watched"</code>
+      - If points are clickable
+    </div>
+
+    <div class="api-attr"><code class="code-attr">point-click="{Expression}"</code>
+      - Executes when point is clicked. Expression has available 3 variables:
+      <div><code class="code-attr">d</code> - Point object</div>
+      <div><code class="code-attr">c</code> - Screen coordinates (not lat/lng) of click event,
+        relative to globe svg element</div>
+      <div><code class="code-attr">el</code> - D3 element of clicked point</div>
+    </div>
+
+    <div class="api-attr"><code class="code-attr">raised-land="{Boolean} default:true"</code>
+      - If raised land effect is turned on
+    </div>
+
+    <div class="api-attr"><code class="code-attr">rotate="{Boolean} default:false watched"</code>
+      - If globe should rotate
+    </div>
+
+    <div class="api-attr"><code class="code-attr">rotate-speed="{Boolean} default:1 watched"</code>
+      - Globe rotation speed
+    </div>
+
+    <div class="api-attr"><code class="code-attr">rotate-angle="{Array} watched"</code>
+      - Will rotate globe once by given degrees. Array should contain exactly 2 elements (Rotation around x and y axis)
+    </div>
+
+    <div class="api-attr"><code class="code-attr">enter-anim-duration="{Expression}"</code>
+      - Duration of transition for newly added points to map. Expression has available 2 variables:
+      <div><code class="code-attr">d</code> - Point object</div>
+      <div><code class="code-attr">i</code> - Index of point</div>
+      Note, index point can be effectively used to create stagger transition. See
+      <a ui-sref="earthquakes">Earthquakes Example</a>
+    </div>
+
+    <div class="api-attr"><code class="code-attr">exit-anim-duration="{Expression}"</code>
+      - Duration of transition for removed points from the map. See enter-anim-duration above
+    </div>
+
+    <div class="api-attr"><code class="code-attr">enter-anim-ease="{String}"</code>
+      - Ease of fadein transition for newly added points. See
+      <a target="_blank" href="https://github.com/mbostock/d3/wiki/Transitions#easing">D3 easing</a>
+    </div>
+
+    <div class="api-attr"><code class="code-attr">exit-anim-ease="{String}"</code>
+      - Ease of fadeout transition for removed points.
+    </div>
+
+    <code class="code-big">&gt;&lt;/m2s-globe&gt;</code>
+    <h2>Styling</h2>
+    <div class="mar-bot-20">These classes are automatically added to globe, so you can use it for CSS styling:</div>
+    <div><code class="code-attr">.m2s-globe</code> - SVG element of a globe</div>
+    <div><code class="code-attr">.m2s-globe-water</code> - Element representing water</div>
+    <div><code class="code-attr">.m2s-globe-graticule</code> - Element representing graticule</div>
+    <div><code class="code-attr">.m2s-globe-shadow</code> - Shadow of raised land</div>
+    <div><code class="code-attr">.m2s-globe-land-bottom</code> - Bottom side of raised land</div>
+    <div><code class="code-attr">.m2s-globe-land-top</code> - Top side of land</div>
+    <div><code class="code-attr">.m2s-globe-points</code> - All points on globe have this class</div>
+  </md-content>
+</div>
+

@@ -1,0 +1,25 @@
+<div ng-controller="EarthquakesCtrl as earthquakesVm">
+  <globe-container>
+    <div name="globe">
+      <div ng-include="'pages/earthquakes/earthquakes-globe.html'"></div>
+    </div>
+    <div name="globe-controls">
+      <h4>Selected Earthquake: </h4>
+      <div class="mar-lef-5" ng-if="earthquakesVm.selected">
+        <div>Place: {{ earthquakesVm.selected.place }}</div>
+        <div>Time: {{ earthquakesVm.getDate(earthquakesVm.selected.time) | date:'medium' }}</div>
+        <div>Updated: {{ earthquakesVm.getDate(earthquakesVm.selected.updated) | date:'medium' }}</div>
+        <div>Code: {{ earthquakesVm.selected.code }}</div>
+        <div>Alert: {{ earthquakesVm.selected.alert }}</div>
+        <div>Magnitude: {{ earthquakesVm.selected.mag }}</div>
+        <div>Maximum reported intensity: {{ earthquakesVm.selected.cdi }}</div>
+        <div>Significance: {{ earthquakesVm.selected.sig }}</div>
+        <div>Tsunami: {{ earthquakesVm.selected.tsunami ? 'Yes' : 'No' }}</div>
+        <div>Url: <a target="_blank" ng-href="{{ earthquakesVm.selected.url }}">USGS</a></div>
+      </div>
+    </div>
+  </globe-container>
+</div>
+<div style="min-height: 600px">
+  <code-container name="earthquakes"></code-container>
+</div>
