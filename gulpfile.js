@@ -41,7 +41,7 @@ gulp.task('inject', function() {
   var target = gulp.src('index.html');
   var sources = gulp.src([
     'app.js',
-    './dist/angular-globe-with-map.js',
+    './dist/angular-globe-with-map.min.js',
     './pages/**/*.js',
     './pages/**/*.css'
   ], {read : false});
