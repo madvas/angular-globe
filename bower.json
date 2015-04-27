@@ -14,7 +14,7 @@
     "d3",
     "world"
   ],
-  "main": "angular-globe-with-maps.js",
+  "main": "angular-globe-with-map.js",
   "license": "MIT",
   "ignore": [
     "**/.*",
