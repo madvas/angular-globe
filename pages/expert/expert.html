@@ -1,10 +1,14 @@
-<div ng-controller="BasicCtrl as basicVm">
+<div ng-controller="ExpertCtrl as expertVm">
   <globe-container>
     <div name="globe">
-      <div ng-include="'pages/basic/basic-globe.html'"></div>
+      <div ng-include="'pages/expert/expert-globe.html'"></div>
     </div>
+  <div name="globe-controls">
+    <div>City: {{ expertVm.selected.name }}</div>
+    <div>Avg. AngularJS developer salary: {{ expertVm.selected.salary | currency}}</div>
+  </div>
   </globe-container>
 </div>
 <div style="min-height: 600px">
-  <code-container name="basic"></code-container>
+  <code-container name="expert" json="true"></code-container>
 </div>

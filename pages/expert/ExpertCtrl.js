@@ -3,32 +3,49 @@
 
   angular
     .module('angularGlobeDemo')
-    .controller('BasicCtrl', BasicCtrl);
+    .controller('ExpertCtrl', ExpertCtrl);
 
   /* @ngInject */
-  function BasicCtrl() {
+  function ExpertCtrl($http, $interval) {
     /* jshint validthis: true */
     var vm = this;
+    vm.pointClicked = pointClicked;
+    vm.selected = {a : 'gasd'};
     activate();
 
     ////////////////
 
     function activate() {
-      var randomPoints = _.map(_.range(50), function() {
-        return {
-          position    : {
-            lat : _.random(-180, 180, true),
-            lng : _.random(-180, 180, true)
-          },
-          pointRadius : _.random(3, 15),
-          fillColor   : 'rgb(' + _.random(255) + ', ' + _.random(255) + ', ' + _.random(255) + ')'
+      $interval(function() {
+        if (!vm.points) {
+          return;
         }
+        _.each(vm.points[0].values, function(city) {
+          city.cityColor = getRandomColor();
+        });
+      }, 500);
+      /**
+       * You can load custom GeoJSON data as map into globe
+       * If you have data in topojson, you have to convert it to GeoJSON like this:
+       */
+      $http.get('pages/core/resources/us.json').then(function(res) {
+        vm.mapData = topojson.feature(res.data, res.data.objects.land);
       });
-      vm.points = [
-        {
-          values : randomPoints
-        }
-      ];
+      $http.get('pages/expert/expert.json').then(function(res) {
+        vm.points = [
+          {
+            values : res.data
+          }
+        ];
+      });
+    }
+
+    function getRandomColor() {
+      return 'rgb(' + _.random(255) + ', ' + _.random(255) + ', ' + _.random(255) + ')';
+    }
+
+    function pointClicked(city) {
+      vm.selected = city;
     }
   }
 })();

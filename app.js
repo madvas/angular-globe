@@ -1,32 +1,46 @@
-/**
-@toc
-1. setup - whitelist, appPath, html5Mode
-*/
+(function(angular) {
+  'use strict';
 
-'use strict';
+  angular
+    .module('angularGlobeDemo', [
+      'ui.router',
+      'ngMaterial',
+      'madvas.angular-globe',
+      'firebase',
+      'hljs',
+      'multi-transclude',
+      'angulartics',
+      'angulartics.google.analytics'
+    ])
+    .config(configureApp);
 
-angular.module('angularGlobeDemo', [
-'ngRoute', 'ngSanitize', 'ngTouch', 'ngAnimate',		//additional angular modules
-'madvas.angular-globe'
-]).
-config(['$routeProvider', '$locationProvider', '$compileProvider', function($routeProvider, $locationProvider, $compileProvider) {
-	/**
-	setup - whitelist, appPath, html5Mode
-	@toc 1.
-	*/
-	$locationProvider.html5Mode(false);		//can't use this with github pages / if don't have access to the server
-	
-	// var staticPath ='/';
-	var staticPath;
-	// staticPath ='/angular-directives/angular-globe/';		//local
-	staticPath ='/';		//nodejs (local)
-	// staticPath ='/angular-globe/';		//gh-pages
-	var appPathRoute ='/';
-	var pagesPath =staticPath+'pages/';
-	
-	
-	$routeProvider.when(appPathRoute+'home', {templateUrl: pagesPath+'home/home.html'});
+  function configureApp($stateProvider, $urlRouterProvider) {
+    var staticPath ='/angular-globe/pages';
 
-	$routeProvider.otherwise({redirectTo: appPathRoute+'home'});
-	
-}]);
+    $stateProvider
+      .state('basic', {
+        url         : '/basic',
+        templateUrl : staticPath + '/basic/basic.html'
+      })
+      .state('advanced', {
+        url         : '/advanced',
+        templateUrl : staticPath + '/advanced/advanced.html'
+      })
+      .state('expert', {
+        url         : '/expert',
+        templateUrl : staticPath + '/expert/expert.html'
+      })
+      .state('earthquakes', {
+        url         : '/earthquakes',
+        templateUrl : staticPath + '/earthquakes/earthquakes.html'
+      })
+      .state('api', {
+        url         : '/api',
+        templateUrl : staticPath + '/api/api.html'
+      });
+
+    $urlRouterProvider.otherwise('/basic');
+
+  }
+
+}(angular));

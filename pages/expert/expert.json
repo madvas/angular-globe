@@ -1,0 +1,26 @@
+[
+  {
+    "position": {
+      "latitude": 40.748817,
+      "longitude": -73.985428
+    },
+    "name": "New York",
+    "salary": "143000"
+  },
+  {
+    "position": {
+      "latitude": 37.773972,
+      "longitude": -122.431297
+    },
+    "name": "San Francisco",
+    "salary": "142000"
+  },
+  {
+    "position": {
+      "latitude": 41.881832,
+      "longitude": -87.623177
+    },
+    "name": "Chicago",
+    "salary": "126000"
+  }
+]

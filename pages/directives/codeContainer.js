@@ -3,14 +3,22 @@
 
   angular
     .module('angularGlobeDemo')
-    .directive('globeContainer', globeContainer);
+    .directive('codeContainer', codeContainer);
 
   /* @ngInject */
-  function globeContainer() {
+  function codeContainer() {
     return {
       restrict    : 'E',
-      transclude  : true,
-      templateUrl : 'pages/directives/globeContainer.html'
+      link        : link,
+      templateUrl : 'pages/directives/codeContainer.html',
+      scope       : {
+        name : '@',
+        json : '&'
+      }
     };
+  }
+
+  function link(scope) {
+    scope.capitalizedName = _.capitalize(scope.name);
   }
 })();

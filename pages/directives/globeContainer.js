@@ -10,7 +10,7 @@
     return {
       restrict    : 'E',
       transclude  : true,
-      templateUrl : '/pages/directives/globeContainer.html'
+      templateUrl : 'pages/directives/globeContainer.html'
     };
   }
 })();

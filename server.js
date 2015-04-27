@@ -19,6 +19,12 @@ if(staticFilePath.substr(-1) === '/'){
 app.configure(function(){
 	// compress static content
 	app.use(express.compress());
+
+  app.use(function(req, res, next) {
+    req.url = req.url.replace('/angular-globe/', '/');
+    next();
+  });
+
 	app.use(serverPath, express.static(staticFilePath));		//serve static files
 	
 	app.use(express.bodyParser());		//for post content / files - not sure if this is actually necessary?

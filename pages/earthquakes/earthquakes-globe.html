@@ -1,11 +1,14 @@
-<m2s-globe
-    points="basicVm.points"
-    point-lat="d.position.lat"
-    point-lng="d.position.lng"
-    point-radius="d.pointRadius"
-    point-fill="d.fillColor"
-    draggable="true"
-    class="basic-globe"
-    clickable="false"
-    point-stroke-width="1">
-</m2s-globe>
+<m2s-globe points="earthquakesVm.points"
+           point-lat="d.location.lat"
+           point-lng="d.location.lng"
+           point-id="d.$id"
+           draggable="true"
+           graticule="false"
+           point-click="earthquakesVm.pointClicked(d)"
+           point-radius="(d.mag * d.mag) / 3"
+           point-stroke-width="1"
+           point-fill="d.alert"
+           class="earthquakes-globe"
+           enter-anim-duration="i * 25"
+           exit-anim-duration="i * 25"
+    ></m2s-globe>

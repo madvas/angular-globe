@@ -1,39 +1,13 @@
-<div ng-controller='CoreCtrl as coreVm'>
-  <!--<m2s-globe land="coreVm.landData"-->
-  <!--points="coreVm.data"-->
-  <!--point-lat="d.position.latitude"-->
-  <!--point-lng="d.position.longitude"-->
-  <!--point-class="d.category"-->
-  <!--draggable="true"-->
-  <!--point-click="coreVm.pointClicked(d)"-->
-  <!--raised-land="true"-->
-  <!--point-radius="d.pointRadius"-->
-  <!--point-stroke="d.stroke"-->
-  <!--point-stroke-width="10"-->
-  <!--rotate="false"-->
-  <!--rotate-speed="5"-->
-  <!--class="my-globe"-->
-  <!--enter-delay="i * 25"-->
-  <!--exit-delay="i * 25">-->
-  <!--</m2s-globe>-->
-  <m2s-globe land="coreVm.landData"
-             points="coreVm.data"
-             point-lat="d.location.lat"
-             point-lng="d.location.lng"
-             point-class="d.category"
-             point-id="d.$id"
-             draggable="true"
-             point-click="coreVm.pointClicked(d)"
-             raised-land="true"
-             point-radius="(d.mag * d.mag) / 3"
-             point-stroke="black"
-             point-stroke-width="1"
-             point-fill="d.alert"
-             rotate="false"
-             rotate-speed="5"
-             class="my-globe"
-             enter-delay="i * 25"
-             exit-delay="i * 25"
-      ></m2s-globe>
+<div ng-controller="BasicCtrl as basicVm">
+  <globe-container>
+    <div name="globe">
+      <div ng-include="'pages/basic/basic-globe.html'"></div>
+    </div>
+    <div name="globe-controls">
+      <div>Basic example with random points</div>
+    </div>
+  </globe-container>
 </div>
+<div style="min-height: 600px">
+  <code-container name="basic"></code-container>
 </div>

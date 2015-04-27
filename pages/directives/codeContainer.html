@@ -1,5 +1,33 @@
 <div flex layout="row" layout-align="center center">
-  <div class="globe-container" flex="100" flex-gt-sm="65" flex-gt-lg="45">
-    <ng-transclude></ng-transclude>
+  <div class="globe-container" flex="100" flex-gt-sm="80" flex-gt-lg="65">
+    <md-content>
+      <md-tabs md-border-bottom md-dynamic-height>
+        <md-tab label="html">
+          <md-content class="md-padding">
+            <div hljs include="'pages/' + name + '/' + name + '-globe.html'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="js">
+          <md-content class="md-padding">
+            <div hljs include="'pages/' + name + '/' + capitalizedName + 'Ctrl.js'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="less">
+          <md-content class="md-padding">
+            <div hljs include="'pages/' + name + '/' + name + '.less'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab label="css">
+          <md-content class="md-padding">
+            <div hljs include="'pages/' + name + '/' + name + '.css'"></div>
+          </md-content>
+        </md-tab>
+        <md-tab ng-if="json()" label="json">
+          <md-content class="md-padding">
+            <div hljs include="'pages/' + name + '/' + name + '.json'"></div>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </md-content>
   </div>
 </div>

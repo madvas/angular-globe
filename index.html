@@ -1,31 +1,110 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="angularGlobeDemo">
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 
-    <title>angular-globe</title>
+  <title>angular-globe</title>
 
-	<link rel="stylesheet" href="pages/home/home.css"/>
-	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css"/>
+  <link rel="stylesheet" href="bower_components/highlightjs/styles/tomorrow-night-bright.css"/>
+  <!-- inject:css -->
+  <link rel="stylesheet" href="/pages/advanced/advanced.css">
+  <link rel="stylesheet" href="/pages/basic/basic.css">
+  <link rel="stylesheet" href="/pages/core/core.css">
+  <link rel="stylesheet" href="/pages/earthquakes/earthquakes.css">
+  <link rel="stylesheet" href="/pages/expert/expert.css">
+  <!-- endinject -->
 </head>
-<body>
-	<div ng-view></div>
-	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-touch/angular-touch.min.js"></script>
-	<script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
-  <script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
-  <script type="text/javascript" src="bower_components/topojson/topojson.js"></script>
-  <script type="text/javascript" src="bower_components/lodash/lodash.min.js"></script>
+<body layout="row" ng-app="angularGlobeDemo" ng-controller="CoreCtrl as coreVm">
+<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+            md-is-locked-open="$mdMedia('gt-md')">
+  <md-toolbar>
+    <h1 class="md-toolbar-tools">
+      <a ui-sref="basic" layout="row" flex class="docs-logo" layout-align="center center">
+        <div class="docs-logotype">Angular Globe</div>
+        <md-icon class="logo" md-svg-src="pages/core/resources/logo.svg"></md-icon>
+      </a>
+    </h1>
+  </md-toolbar>
+  <md-content layout="column" flex>
+    <ul class="docs-menu" flex layout="column">
+      <md-button ng-class="{'md-primary' : coreVm.includesState('basic')}"
+                 ui-sref="basic">Basic Example
+      </md-button>
+      <md-button ng-class="{'md-primary' : coreVm.includesState('advanced')}"
+                 ui-sref="advanced">Advanced Example
+      </md-button>
+      <md-button ng-class="{'md-primary' : coreVm.includesState('expert')}"
+                 ui-sref="expert">Expert Example
+      </md-button>
+      <md-button ng-class="{'md-primary' : coreVm.includesState('earthquakes')}"
+                 ui-sref="earthquakes">Real-time Earthquakes!
+      </md-button>
+      <md-button ng-class="{'md-primary' : coreVm.includesState('api')}"
+                 ui-sref="api">API Reference
+      </md-button>
+      <md-button class="md-warn"
+                 hide-gt-md
+                 ng-click="coreVm.toggleSidenav()">Close
+      </md-button>
+    </ul>
+  </md-content>
+</md-sidenav>
+<div layout="column" role="main" flex>
+  <md-toolbar>
+    <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
+      <div>
+        <md-button hide-gt-md ng-click="coreVm.toggleSidenav()" class="md-icon-button" aria-label="menu">
+          <md-icon md-svg-icon="pages/core/resources/menu.svg"></md-icon>
+        </md-button>
+        <code>bower install angular-globe</code>
+      </div>
+      <div>
+        <iframe src="https://ghbtns.com/github-btn.html?user=madvas&repo=angular-globe&type=star&count=true&size=large"
+                frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+      </div>
+    </div>
+  </md-toolbar>
+  <md-content class="content" ui-view flex layout-padding></md-content>
+</div>
+<script type="text/javascript" src="bower_components/firebase/firebase.js"></script>
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="bower_components/ui-router/release/angular-ui-router.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-touch/angular-touch.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-aria/angular-aria.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-material/angular-material.min.js"></script>
+<script type="text/javascript" src="bower_components/angularfire/dist/angularfire.min.js"></script>
+<script type="text/javascript" src="bower_components/d3/d3.min.js"></script>
+<script type="text/javascript" src="bower_components/topojson/topojson.js"></script>
+<script type="text/javascript" src="bower_components/lodash/lodash.min.js"></script>
+<script type="text/javascript" src="bower_components/highlightjs/highlight.pack.js"></script>
+<script type="text/javascript" src="bower_components/angular-highlightjs/angular-highlightjs.min.js"></script>
+<script type="text/javascript" src="bower_components/ng-multi-transclude/src/multi-transclude.js"></script>
+<script type="text/javascript" src="bower_components/angulartics/dist/angulartics.min.js"></script>
+<script type="text/javascript" src="bower_components/angulartics/dist/angulartics-ga.min.js"></script>
 
 
+<!-- inject:js -->
+<script src="/app.js"></script>
+<script src="/mapData.js"></script>
+<script src="/globe.js"></script>
+<script src="/pages/advanced/AdvancedCtrl.js"></script>
+<script src="/pages/basic/BasicCtrl.js"></script>
+<script src="/pages/core/CoreCtrl.js"></script>
+<script src="/pages/directives/codeContainer.js"></script>
+<script src="/pages/directives/globeContainer.js"></script>
+<script src="/pages/earthquakes/EarthquakesCtrl.js"></script>
+<script src="/pages/expert/ExpertCtrl.js"></script>
+<!-- endinject -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	<script type="text/javascript" src="globe.js"></script>
-	<!--<script type="text/javascript" src="globe.min.js"></script>-->
-	
-	<script type="text/javascript" src="app.js"></script>
-	
-	<script type="text/javascript" src="pages/home/HomeCtrl.js"></script>
+  ga('create', 'UA-21191392-7', 'auto');
+
+</script>
 </body>
 </html>

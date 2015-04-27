@@ -12,6 +12,7 @@ lib-cov
 pids
 logs
 results
+*.sublime-*
 
 node_modules
 

@@ -1,6 +1,20 @@
-<globe-container>
-  <div ng-include="'pages/basic/basic-globe.html'"></div>
-</globe-container>
+<div ng-controller="AdvancedCtrl as advancedVm">
+  <globe-container>
+    <div name="globe">
+      <div ng-include="'pages/advanced/advanced-globe.html'"></div>
+    </div>
+    <div name="globe-controls">
+      <md-slider
+          flex
+          step="0.2"
+          min="0"
+          max="10"
+          ng-model="advancedVm.speed"
+          aria-label="speed">
+      </md-slider>
+    </div>
+  </globe-container>
+</div>
 <div style="min-height: 600px">
-  <code-container name="basic"></code-container>
+  <code-container name="advanced"></code-container>
 </div>

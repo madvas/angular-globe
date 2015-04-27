@@ -1,12 +1,16 @@
-<div ng-controller="BasicCtrl as basicVm">
-  <m2s-globe
-      points="basicVm.points"
-      point-lat="d.position.lat"
-      point-lng="d.position.lng"
-      point-radius="d.pointRadius"
-      point-fill="d.fillColor"
-      draggable="true"
-      class="basic-globe"
-      point-stroke-width="1"
-      ></m2s-globe>
-</div>
+<m2s-globe
+    points="advancedVm.points"
+    point-lat="d.myPosition.lat"
+    point-lng="d.myPosition.lng"
+    raised-land="false"
+    point-id="d.myId"
+    point-radius="advancedVm.getPointRadius(d)"
+    point-class="advancedVm.getPointClass(d)"
+    rotate="true"
+    rotate-speed="advancedVm.speed"
+    class="advanced-globe"
+    enter-anim-duration="i * 80"
+    map-type="countries"
+    clickable="false"
+    graticule="false">
+</m2s-globe>
