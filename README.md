@@ -6,7 +6,7 @@ AngularJS directive for visualising data on interactive 3D globe.
 ### Requirements
   - AngularJS
   - D3.js
-  - [topojson] (only if using version with built in map)
+  - [topojson] \(only if using version with built in map\)
 
 ### Examples & API Reference
 You can see it in action here [madvas.github.io/angular-globe]
