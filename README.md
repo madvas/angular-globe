@@ -39,7 +39,7 @@ angular.module('myModule', ['madvas.angular-globe'])
 For more explanatory examples see: [madvas.github.io/angular-globe]
 
 ### Contributions
-Would be greaat ;)
+Would be great ;)
 
 [Expert Example]: http://madvas.github.io/angular-globe/#/expert
 [topojson]: https://github.com/mbostock/topojson
