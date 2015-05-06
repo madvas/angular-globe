@@ -15,6 +15,7 @@ function m2sGlobe() {
   var defaultPointStrokeWidth = 0;
   var defaultPointRadius = 5;
   var defaultGlobeSize = 400;
+  var defaultAnimDuration = 250;
   var globeSize;
   var svg;
   var path;
@@ -57,6 +58,8 @@ function m2sGlobe() {
       rotateAngle       : '&',
       enterAnimDuration : '&',
       exitAnimDuration  : '&',
+      enterAnimDelay    : '&',
+      exitAnimDelay     : '&',
       enterAnimEase     : '&',
       exitAnimEase      : '&'
     }
@@ -171,6 +174,9 @@ function m2sGlobe() {
       .delay(function(d, i) {
         return getTransitionDelay('enter', d, i) || 0;
       })
+      .duration(function(d, i) {
+        return getTransitionDuration('enter', d, i) || defaultAnimDuration;
+      })
       .attr('opacity', 1);
 
     points.attr({
@@ -190,6 +196,9 @@ function m2sGlobe() {
       .ease(scope.exitAnimEase() || defaultEase)
       .delay(function(d, i) {
         return getTransitionDelay('exit', d, i) || 0;
+      })
+      .duration(function(d, i) {
+        return getTransitionDuration('exit', d, i) || defaultAnimDuration;
       })
       .attr('opacity', 0)
       .remove();
@@ -269,6 +278,10 @@ function m2sGlobe() {
   }
 
   function getTransitionDelay(type, d, i) {
+    return scope[type + 'AnimDelay']({d : d, i : i}) || 0;
+  }
+
+  function getTransitionDuration(type, d, i) {
     return scope[type + 'AnimDuration']({d : d, i : i}) || 0;
   }
 
@@ -278,7 +291,7 @@ function m2sGlobe() {
       points.on('click', null);
     } else {
       points.style('cursor', 'pointer');
-      points.on('click', pointClicked)
+      points.on('click', pointClicked);
     }
   }
 
